@@ -1,0 +1,68 @@
+<h1>Réglages</h1>
+
+<div class="container container-settings" ng-controller="SettingsController">
+    <div>
+        <h2>Dernière date de rangement:</h2>
+        <p>{{settings.dateOrdering}}</p>
+    </div>
+    <div container="folder">
+        <form class="formSettings" id='formSettingsFolder' ng-submit="submit(category='folder')" ng-controller="SettingsController">
+            <h2>Dossiers de recherche par défaut:</h2>
+            <div id="containerFolders">                            
+                <ul class="folder-container">
+                    <li ng-repeat="folder in settings.folders" class="folders" id="{{folder}}" value="{{folder}}">
+                        <strong>{{folder}}</strong>   
+                        <img src="media/img/delete.png" alt="Supprimer" ng-click="deleteSetting(this)" title="Supprimer" class="deleteSmall" value="{{folder}}" category="folder"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="addable form-inline">
+            	<img src="media/img/add.png" alt="Ajouter un dossier de recherche" title="Ajouter un dossier de recherche" class="form-group add" ng-click="showFieldsAdd = ! showFieldsAdd"/>
+                <div class="form-addable animated" ng-show="showFieldsAdd" ng-class="showFieldsAdd ? 'flipInY' : 'flipOutY'">
+                    <input type="text" required name="newFolder" id="newData" ng-model="newData" class="form-group"/>
+                    <input type="image" src="media/img/ok.png" value="submit" alt="Valider" alt="Valider" class="form-group validate validateFormat" category="folder" id="validateFolder"/>
+                </div>
+            </div>        
+        </form>
+    </div>
+    <div container="video">
+        <form class="formSettings" id='formSettingsVideo' ng-submit="submit(category='video')" ng-controller="SettingsController" >
+            <h2>Formats vidéo pris en compte:</h2>
+            <div id='containerVideoFormats'>
+                <ul class="video-container">
+                    <li ng-repeat="video in settings.videoFormats" class="format" id="{{video}}" value="{{video}}">
+                        <strong>{{video}}</strong>
+                        <img src="media/img/delete.png" alt="Supprimer" ng-click="deleteSetting(this)" title="Supprimer" class="deleteSmall" value="{{video}}" category="video"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="addable form-inline">
+            	<img src="media/img/add.png" alt="Ajouter un format video" title="Ajouter un format video" class="form-group add" ng-click="showVideoAdd = ! showVideoAdd"/>
+                <div class="form-addable animated" ng-show="showVideoAdd" ng-class="showVideoAdd ? 'flipInY' : 'flipOutY'">
+                    <input type="text" required name="newVideo" id="newVideo" ng-model="newData" class="form-group"/>
+                    <input type="image" src="media/img/ok.png" value="submit" alt="Valider" alt="Valider" class="form-group validate validateFormat" category="video" id="validateVideoFormat"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div container="audio">
+        <form class="formSettings" id='formSettingsAudio' ng-submit="submit(category='audio')" ng-controller="SettingsController" >
+            <h2>Formats audio pris en compte:</h2>
+            <div id='containerAudioFormats'>
+                <ul class="audio-container">
+		            <li ng-repeat="audio in settings.audioFormats" class="format" id="{{audio}}" value="{{audio}}">
+                        <strong>{{audio}}</strong>
+                        <img src="media/img/delete.png" alt="Supprimer" title="Supprimer" ng-click="deleteSetting(this)" class="deleteSmall" value="{{audio}}" category="audio"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="addable form-inline">
+            	<img src="media/img/add.png" alt="Ajouter un format audio" title="Ajouter un format audio" class="form-group add" ng-click="showAudioAdd = ! showAudioAdd"/>
+                <div class="form-addable animated" ng-show="showAudioAdd" ng-class="showAudioAdd ? 'flipInY' : 'flipOutY'">
+                    <input type="text" required name="newAudio" id="newAudio" ng-model="newData" class="form-group"/>
+                    <input type="image" src="media/img/ok.png" value="submit" alt="Valider" alt="Valider" class="form-group validate validateFormat" category="audio" ng-model="add" id="validateAudioFormat"/>
+                </div>
+            </div>            
+        </form>
+    </div>
+</div>

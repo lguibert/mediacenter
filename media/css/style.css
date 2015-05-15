@@ -1,0 +1,228 @@
+.message{
+    padding:15px;
+    text-align: center;
+    position: fixed;
+    top: 35%;
+    left:40%;
+    width: 300px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+h5{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.validateFormat{
+    height: 32px;
+    width: 32px;
+}
+
+.error{
+    background-color: #FF4719;
+}
+
+.success{
+    background-color: #33AD5C;
+    color: white;
+}
+
+#wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+ 
+#main {
+    overflow:auto;
+    padding-bottom: 50px;
+}
+ 
+footer {
+    position: relative;
+    clear:both;
+    height: 50px;
+    background-color: #333;
+    text-align: center;
+    color:white;
+    margin-top: 1px;
+}
+
+.files{
+    height:120px;
+    margin: 10px;
+    word-wrap: break-word;
+    overflow: hidden;
+    border:dotted black 1px;
+}
+
+.files p{  
+    max-height:60px;
+}
+
+.clickable:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.contains{
+    display:none;
+}
+
+.addable img, .deletable img, .deleteSmall{
+    cursor: pointer;
+}
+
+.addable{
+    height: 40px;
+}
+
+.addable img.add{
+    width: 32px;
+    margin-right: 20px;
+}
+
+.form-addable{
+    width:210px;
+    display: inline-block;
+}
+
+.deleteSmall{
+    height:10px;
+    width:10px;
+    margin-left: 30px;
+    -webkit-transition: width 0.5s, height 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: width 0.5s, height 0.5s;
+}
+
+.deleteSmall:hover{
+    height:16px;
+    width:16px;
+}
+
+.formats strong{
+    width:35px;
+    display:inline-block;
+}
+
+.formats{
+    margin:10px;
+}
+
+.validate, .submit{
+    display:inline-block;
+}
+
+.add:active{
+    border: solid rgba(166, 200, 255, 1) 2px;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+.container-settings ul .ng-enter{
+    -webkit-animation: slideInUp 1s;
+    -moz-animation: slideInUp 1s;
+    -o-animation: slideInUp 1s;
+    animation: slideInUp 1s;
+}
+
+.container-settings ul .ng-leave{
+    -webkit-animation: fadeOut 1s;
+    -moz-animation: fadeOut 1s;
+    -o-animation: fadeOut 1s;
+    animation: fadeOut 1s;
+}
+
+.ng-hide{
+    -webkit-animation: fadeOut 1s;
+    -moz-animation: fadeOut 1s;
+    -o-animation: fadeOut 1s;
+    animation: fadeOut 1s;
+}
+
+.files-container{
+    overflow: hidden;
+    border: solid black 1px;
+    height: 150px;
+    position: relative;
+    z-index: 1;
+}
+
+.files-container .back-music{
+    background: url('../img/background_music.png') no-repeat center center;
+}
+
+.files-container .back-video{
+    background: url('../img/background_video.png') no-repeat center center;
+}
+
+.files-container .back{
+    opacity: 0.2;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin-left:-15px;
+    z-index: 2;
+}
+
+.files-container .content{
+    text-align: center;
+    z-index: 3;
+}
+
+.files-container .content h1{
+    margin: 0;
+}
+
+.clickable{
+    background-color: #dcdcdc;
+    -webkit-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+    -moz-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+    -ms-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+    -o-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+    transition: all .5s cubic-bezier( .6, 2, .4, 1);
+}
+
+.loading{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+}
+
+.loading div{
+    position: absolute;
+    top:42%;
+    left: 42%;
+    padding:50px 50px 30px 50px;
+    border:double black 5px;
+}
+
+.loading div span{
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.clickable:hover{
+    cursor: pointer;
+    z-index:9999;
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+#containerFiles .ng-enter {
+    -webkit-animation: zoomIn 1s;
+    -moz-animation: zoomIn 1s;
+    -o-animation: zoomIn 1s;
+    animation: zoomIn  1s;
+}

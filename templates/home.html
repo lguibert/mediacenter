@@ -1,0 +1,39 @@
+<div class="container" ng-controller="FilesController">
+    <div class="loading" ng-show="loading">
+        <div>
+           <img src="media/img/loader.gif"/>
+            <span>Chargement...</span>
+        </div>
+    </div>
+
+    <div ng-hide="loading" id="containerFiles">
+        <!--
+        <h1>Vidéos : {{videos.length}}</h1>
+        <div class="files-container col-xs-3 col-md-3 clickable" ng-repeat="video in videos | orderBy">
+            <div class="back back-video"></div>
+            <div class="content">
+                <h1><strong>{{video[0]}}</strong></h1>
+                <span>{{video[1]}}</span>
+            </div>
+        </div>
+
+        <h1>Audio : {{audios.length}}</h1>
+        <div class="files-container col-xs-3 col-md-3" ng-repeat="audio in audios | orderBy">
+            <div class="back back-music"></div>
+            <div class="content">
+                <h1><strong>{{audio[0]}}</strong></h1>
+                <span>{{audio[1]}}</span>
+            </div>
+        </div>
+        </ul>
+        -->
+        <h1>Séries</h1>
+        <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(this)" ng-repeat="subfolder in subfolders">
+            <div class="back back-video"></div>
+            <div class="content">
+                <span>{{subfolder}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>

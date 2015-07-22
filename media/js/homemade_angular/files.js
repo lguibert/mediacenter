@@ -4,7 +4,7 @@ app.factory('FilesFactory', ['$http', '$q', function($http, $q){
         files : false,
         getFiles : function(){
             var deferred = $q.defer();
-            $http.get(server+'files/get/', {cache: true})
+            $http.get(server+'files/', {cache: true})
                 .success(function(data){
                     deferred.resolve(data);
                 })
@@ -26,8 +26,8 @@ app.controller('FilesController', ['$scope', 'superCache', 'FilesFactory',  func
     }else{
         $scope.loading = true;
        $scope.files = FilesFactory.getFiles().then(function(data){
-           $scope.subfolders = data[0][0];
-           $scope.files = data[1];
+           $scope.subfolders = data[0];
+           $scope.files = data[1][0];
            $scope.loading = false;
        }, function(msg){
            $scope.loading = false;

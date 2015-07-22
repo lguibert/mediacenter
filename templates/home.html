@@ -27,8 +27,8 @@
         </div>
         </ul>
         -->
-        <h1>Séries</h1>
-        <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(this)" ng-repeat="subfolder in subfolders">
+        <h1>Fichiers: {{subfolders.length}}</h1>
+        <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(subfolders[$index][1])" ng-repeat="subfolder in subfolders track by $index">
             <div class="back back-video"></div>
             <div class="content">
                 <span>{{subfolder}}</span>

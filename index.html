@@ -1,65 +1,97 @@
 <!DOCTYPE html>
 <html ng-app="mediacenter">
-    <head>      
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
-        <title>
-            Liste des fichiers disponibles
-        </title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+        Liste des fichiers disponibles
+    </title>
 
-        <script src="media/js/jquery.min.js"></script>
-        <script src="media/js/bootstrap.min.js"></script>
-        <script src="media/js/header.js"></script>
+    <script src="media/js/jquery.min.js"></script>
+    <script src="media/js/bootstrap.min.js"></script>
+    <script src="media/js/header.js"></script>
 
-        <!--<script src="media/js/angular.min.js"></script>-->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-        <!--<script src="media/js/angular-route.min.js"></script>-->
-       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
-       <script src="media/js/angular-animate.js"></script>
+    <!--<script src="media/js/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <!--<script src="media/js/angular-route.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+    <script src="media/js/angular-animate.js"></script>
 
-       <link rel="stylesheet" href="media/css/style.css">
-       <link rel="stylesheet" href="media/css/animate.css">
-       <link rel="stylesheet" href="media/css/bootstrap.min.css">
-   </head>
-   <body>
-       <header>
-           <nav class="navbar navbar-inverse navbar-fixed-top">
-               <div class="container">
-                   <div class="navbar-header">
-                       <a href="#/" class="navbar-brand">Mediacenter</a>
-                   </div>
-                   <div id="navbar" class="navbar-collapse collapse">
-                       <div class="navbar_header">
-                           <a href="#/settings" class="navbar-brand">Réglages</a>
-                       </div>
-                       <div class="navbar-form navbar-right">
-                           <a href="#" class="form-control">Déconnexion</a>
-                       </div>
-                   </div>
-               </div>
-           </nav>
-       </header>
-       <section id="wrap">
-           <div id="main">
-               <div class="message"></div>
-               <div ng-view></div>
-           </div>
-       </section>
-       <script>
-           var app = angular.module('mediacenter', ['ngRoute', 'ngAnimate']);
+    <link rel="stylesheet" href="media/css/style.css">
+    <link rel="stylesheet" href="media/css/animate.css">
+    <link rel="stylesheet" href="media/css/bootstrap.min.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#/" class="navbar-brand">Mediacenter</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <div class="navbar_header">
+                    <a href="#/settings" class="navbar-brand">Réglages</a>
+                </div>
+                <div class="navbar-form navbar-right">
+                    <a href="#" class="form-control">Déconnexion</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<section id="wrap">
+    <div id="main">
+        <div class="message"></div>
+        <div ng-controller="MainController">
+            <div class="loading" ng-show="loading">
+                <div>
+                    <img src="media/img/loader.gif"/>
+                    <span>Chargement...</span>
+                </div>
+            </div>
+        </div>
+        <div ng-view></div>
+    </div>
+</section>
+<script>
+    var app = angular.module('mediacenter', ['ngRoute', 'ngAnimate']);
 
-           app.config(['$routeProvider', function($routeProvider){
-               $routeProvider
-                       .when('/', {templateUrl: 'templates/home.html'})
-                       .when('/settings', {templateUrl: 'templates/settings.html'})
-                       .otherwise({redirectTo : '/'});
-           }]);
+    app.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+                .when('/', {templateUrl: 'templates/home.html'})
+                .when('/settings', {templateUrl: 'templates/settings.html'})
+                .otherwise({redirectTo: '/'});
+    }]);
 
-           app.factory('superCache',['$cacheFactory', function($cacheFactory){
-               return $cacheFactory('myData');
-           }]);
-       </script>
-       <script src="media/js/homemade_angular/settings.js"></script>
-       <script src="media/js/homemade_angular/files.js"></script>
-       <script src="media/js/messages.js"></script>
-   </body>
+
+    app.service('LoadingState', ['$rootScope', function ($rootScope) {
+        var loading = false;
+
+        return {
+            getLoadingState: function () {
+                $rootScope.$emit("ChangedState");
+                return loading;
+            },
+            setLoadingState: function (state) {
+                $rootScope.$emit("ChangedState");
+                loading = state;
+            }
+        }
+    }]);
+
+    app.controller('MainController', ['$scope', '$rootScope', 'LoadingState', function ($scope, $rootScope, LoadingState) {
+        $scope.loading = false;
+
+        $rootScope.$on('ChangedState', function(){
+            $scope.loading = LoadingState.getLoadingState();
+        });
+    }]);
+
+    app.factory('superCache', ['$cacheFactory', function ($cacheFactory) {
+        return $cacheFactory('myData');
+    }]);
+</script>
+<script src="media/js/homemade_angular/settings.js"></script>
+<script src="media/js/homemade_angular/files.js"></script>
+<script src="media/js/messages.js"></script>
+</body>
 </html>

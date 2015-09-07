@@ -226,3 +226,8 @@ footer {
     -o-animation: zoomIn 1s;
     animation: zoomIn  1s;
 }
+/*
+.ng-scope  {
+  border: 1px solid red;
+  margin: 3px;
+}*/

@@ -1,6 +1,6 @@
 var server = "http://mediacenter.lucasguibert.com:8000/";
 
-app.controller('SettingsController', ['$scope', '$http','superCache', function($scope, $http, superCache){
+app.controller('SettingsController', ['$scope', '$http','superCache', 'LoadingState', function($scope, $http, superCache, LoadingState){
     var cache = superCache.get('settings');
 
     if(cache){
@@ -40,8 +40,6 @@ app.controller('SettingsController', ['$scope', '$http','superCache', function($
     $scope.submit = function(){
         var value = encodeURIComponent($scope.newData);
         var category = $scope.category;
-
-        console.log(value);
 
         $http.get(server+'settings/add/'+category+'/'+value+"")
             .success(function(data){

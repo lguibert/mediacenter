@@ -64,23 +64,18 @@
 
 
     app.service('LoadingState', ['$rootScope', function ($rootScope) {
-        var loading = false;
-
         return {
             getLoadingState: function () {
-                $rootScope.$emit("ChangedState");
-                return loading;
+                return this.loading;
             },
             setLoadingState: function (state) {
+                this.loading = state;
                 $rootScope.$emit("ChangedState");
-                loading = state;
             }
         }
     }]);
 
     app.controller('MainController', ['$scope', '$rootScope', 'LoadingState', function ($scope, $rootScope, LoadingState) {
-        $scope.loading = false;
-
         $rootScope.$on('ChangedState', function(){
             $scope.loading = LoadingState.getLoadingState();
         });

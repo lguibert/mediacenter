@@ -35,7 +35,7 @@ app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesF
             $scope.loading = LoadingState.getLoadingState();
         }, function (msg) {
             LoadingState.setLoadingState(false);
-            $scope.loading = LoadingState.getLoadingState();
+           $scope.loading = LoadingState.getLoadingState();
             displayMessage(msg, "error");
         });
     }

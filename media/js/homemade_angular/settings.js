@@ -1,4 +1,4 @@
-var server = "http://mediacenter.lucasguibert.com:8000/";
+var server = "http://dev.lucasguibert.com:8000/";
 
 app.controller('SettingsController', ['$scope', '$http','superCache', 'LoadingState', function($scope, $http, superCache, LoadingState){
     var cache = superCache.get('settings');

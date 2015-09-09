@@ -1,14 +1,23 @@
 <div class="container" ng-controller="FilesController">
     <div ng-hide="loading" id="containerFiles">
-        <h1>Fichiers: {{subfolders.length}}</h1>
+        <h1>Fichiers: {{subfolders.length}} -- {{rootFolder}}</h1>
 
-        <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(subfolders[$index][0])"
+        <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(rootFolder +'/'+subfolders[$index])"
              ng-repeat="subfolder in subfolders track by $index">
             <div class="back back-video"></div>
             <div class="content">
                 <span>{{subfolder}}</span>
             </div>
         </div>
+        <div ng-if="files" ng-repeat="file in files track by $index" class="files-container col-xs-3 col-md-3">
+            <div class="back back-video"></div>
+            <div class="content">
+                <span>{{file}}</span>
+            </div>
+        </div>
 
+    </div>
+    <div>
+        {{all}}
     </div>
 </div>

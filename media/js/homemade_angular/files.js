@@ -53,13 +53,11 @@ app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesF
     }
 
     $scope.findChildren = function (folder) {
-        var children = FilesFactory.getFile(encodeURL(folder)).then(function (data) {
+        FilesFactory.getFile(encodeURL(folder)).then(function (data) {
             $scope.subfolders = data[0];
             $scope.files = data[1][0];
             $scope.rootFolder = data[2];
         });
-
-
     };
 
     function encodeURL(string) {

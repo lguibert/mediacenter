@@ -181,11 +181,11 @@ footer {
 
 .clickable{
     background-color: #dcdcdc;
-    -webkit-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+    /*-webkit-transition: all .5s cubic-bezier( .6, 2, .4, 1);
     -moz-transition: all .5s cubic-bezier( .6, 2, .4, 1);
     -ms-transition: all .5s cubic-bezier( .6, 2, .4, 1);
     -o-transition: all .5s cubic-bezier( .6, 2, .4, 1);
-    transition: all .5s cubic-bezier( .6, 2, .4, 1);
+    transition: all .5s cubic-bezier( .6, 2, .4, 1);*/
 }
 
 .loading{
@@ -213,20 +213,20 @@ footer {
 .clickable:hover{
     cursor: pointer;
     z-index:9999;
-    -webkit-transform: scale(1.5);
+   /* -webkit-transform: scale(1.5);
     -moz-transform: scale(1.5);
     -ms-transform: scale(1.5);
     -o-transform: scale(1.5);
-    transform: scale(1.5);
+    transform: scale(1.5);*/
 }
-
+/*
 #containerFiles .ng-enter {
     -webkit-animation: zoomIn 1s;
     -moz-animation: zoomIn 1s;
     -o-animation: zoomIn 1s;
     animation: zoomIn  1s;
 }
-/*
+
 .ng-scope  {
   border: 1px solid red;
   margin: 3px;

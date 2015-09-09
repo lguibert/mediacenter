@@ -1,8 +1,22 @@
 <div class="container" ng-controller="FilesController">
     <div ng-hide="loading" id="containerFiles">
-        <h1>Fichiers: {{subfolders.length}} -- {{rootFolder}}</h1>
+        <h1>
+            <ng-pluralize ng-if="subfolders.length > 0" count="subfolders.length"
+                          when="{'0': 'Rien à voir ici.',
+                     'one': 'Dossier',
+                     'other': 'Dossiers'}">
+            </ng-pluralize>
+            <ng-pluralize ng-if="subfolders.length == 0" count="files.length"
+                          when="{'0': 'Rien à voir ici.',
+                     'one': 'Fichier',
+                     'other': 'Fichiers'}">
+            </ng-pluralize>
+            : {{subfolders.length > 0 ? subfolders.length : files.length}}
+        </h1>
+        <h2> >>> {{rootFolder[0]}}</h2>
 
-        <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(rootFolder +'/'+subfolders[$index])"
+        <div class="files-container col-xs-3 col-md-3 clickable"
+             ng-click="findChildren(rootFolder +'/'+subfolders[$index])"
              ng-repeat="subfolder in subfolders track by $index">
             <div class="back back-video"></div>
             <div class="content">

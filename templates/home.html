@@ -1,37 +1,39 @@
 <div class="container" ng-controller="FilesController">
     <div ng-hide="loading" id="containerFiles">
-        <h1>
+        <!--<h1>
             <ng-pluralize ng-if="subfolders.length > 0" count="subfolders.length"
-                          when="{'0': 'Rien à voir ici.',
+                          when="{'0': 'Rien ï¿½ voir ici.',
                      'one': 'Dossier',
                      'other': 'Dossiers'}">
             </ng-pluralize>
             <ng-pluralize ng-if="subfolders.length == 0" count="files.length"
-                          when="{'0': 'Rien à voir ici.',
+                          when="{'0': 'Rien ï¿½ voir ici.',
                      'one': 'Fichier',
                      'other': 'Fichiers'}">
             </ng-pluralize>
             : {{subfolders.length > 0 ? subfolders.length : files.length}}
         </h1>
-        <h2> >>> {{rootFolder[0]}}</h2>
+        <h2> >>> {{rootFolder}}</h2>
 
-        <div class="files-container col-xs-3 col-md-3 clickable"
-             ng-click="findChildren(rootFolder +'/'+subfolders[$index])"
-             ng-repeat="subfolder in subfolders track by $index">
-            <div class="back back-video"></div>
-            <div class="content">
-                <span>{{subfolder}}</span>
+        -->
+
+
+        <div ng-repeat="packs in data">
+            <div ng-repeat="sub in packs[1] track by $index">
+                <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(packs[0] +'/'+sub)">
+                    <div class="back back-video"></div>
+                    <div class="content">
+                        <span class="namesFolders">{{sub}}</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="packs[2]" ng-repeat="file in packs[2] track by $index" class="files-container col-xs-3 col-md-3">
+                <div class="back back-video"></div>
+                <div class="content">
+                    <span class="namesFolders long">{{file}}</span>
+                </div>
             </div>
         </div>
-        <div ng-if="files" ng-repeat="file in files track by $index" class="files-container col-xs-3 col-md-3">
-            <div class="back back-video"></div>
-            <div class="content">
-                <span>{{file}}</span>
-            </div>
-        </div>
-
     </div>
-    <div>
-        {{all}}
-    </div>
+</div>
 </div>

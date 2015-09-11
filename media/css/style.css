@@ -173,6 +173,8 @@ footer {
 .files-container .content{
     text-align: center;
     z-index: 3;
+    height: 100%;
+    width: 100%;
 }
 
 .files-container .content h1{
@@ -219,6 +221,15 @@ footer {
     -o-transform: scale(1.5);
     transform: scale(1.5);*/
 }
+
+.namesFolders{
+    color:blue;
+    font-size: 20px;
+    vertical-align: middle;
+    position: relative;
+    top: 33%;
+}
+
 /*
 #containerFiles .ng-enter {
     -webkit-animation: zoomIn 1s;

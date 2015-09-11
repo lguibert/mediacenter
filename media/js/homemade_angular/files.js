@@ -39,9 +39,9 @@ app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesF
         $scope.loading = LoadingState.getLoadingState();
 
         $scope.files = FilesFactory.getFiles().then(function (data) {
-            $scope.subfolders = data[0];
-            $scope.files = data[1][0];
-            $scope.rootFolder = data[2];
+            $scope.data = data;
+
+            console.debug(data);
 
             LoadingState.setLoadingState(false);
             $scope.loading = LoadingState.getLoadingState();
@@ -50,15 +50,21 @@ app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesF
             $scope.loading = LoadingState.getLoadingState();
             displayMessage(msg, "error");
         });
+
     }
 
     $scope.findChildren = function (folder) {
+        console.log(folder);
         FilesFactory.getFile(encodeURL(folder)).then(function (data) {
-            $scope.subfolders = data[0];
+            console.debug(data);
+            $scope.data = data;
+            /*$scope.subfolders = data[0];
             $scope.files = data[1][0];
-            $scope.rootFolder = data[2];
+            $scope.rootFolder = data[2];*/
+
         });
     };
+
 
     function encodeURL(string) {
         var toReplace = [" ", "/"];

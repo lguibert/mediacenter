@@ -1,39 +1,51 @@
 <div class="container" ng-controller="FilesController">
     <div ng-hide="loading" id="containerFiles">
-        <!--<h1>
-            <ng-pluralize ng-if="subfolders.length > 0" count="subfolders.length"
-                          when="{'0': 'Rien � voir ici.',
+        <div class="folder-presentation" ng-repeat="packs in data track by $index">
+            <div class="folder-container col-xs-12 col-md-12">
+                <h1 class="title-folder" trace-nav ng-attr-root="{{packs[0]}}"></h1>
+
+                <div ng-if="packs[1].length <= 0 && packs[2].length <= 0">
+                    <h1>Aucun dossier ou fichier ici !</h1>
+                </div>
+
+                <div ng-if="packs[1].length > 0" class="col-xs-12 col-md-12">
+                    <h1 ng-if="packs[1].length > 0">
+                        <ng-pluralize count="packs[1].length"
+                                      when="{'0': 'Rien à voir ici.',
                      'one': 'Dossier',
                      'other': 'Dossiers'}">
-            </ng-pluralize>
-            <ng-pluralize ng-if="subfolders.length == 0" count="files.length"
-                          when="{'0': 'Rien � voir ici.',
-                     'one': 'Fichier',
-                     'other': 'Fichiers'}">
-            </ng-pluralize>
-            : {{subfolders.length > 0 ? subfolders.length : files.length}}
-        </h1>
-        <h2> >>> {{rootFolder}}</h2>
-
-        -->
-
-
-        <div ng-repeat="packs in data">
-            <div ng-repeat="sub in packs[1] track by $index">
-                <div class="files-container col-xs-3 col-md-3 clickable" ng-click="findChildren(packs[0] +'/'+sub)">
-                    <div class="back back-video"></div>
-                    <div class="content">
-                        <span class="namesFolders">{{sub}}</span>
+                        </ng-pluralize>
+                        ({{packs[1].length}})
+                    </h1>
+                    <div ng-repeat="sub in packs[1] track by $index">
+                        <div class="files-container col-xs-3 col-md-3 clickable"
+                             ng-click="findChildren(packs[0] +'/'+sub)">
+                            <div class="back back-video"></div>
+                            <div class="content">
+                                <span class="namesFolders">{{sub}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div ng-if="packs[2]" ng-repeat="file in packs[2] track by $index" class="files-container col-xs-3 col-md-3">
-                <div class="back back-video"></div>
-                <div class="content">
-                    <span class="namesFolders long">{{file}}</span>
+
+                <div class="col-xs-12 col-md-12">
+                    <h1 ng-if="packs[2].length > 0">
+                        <ng-pluralize count="packs[2].length"
+                                      when="{'0': 'Rien à voir ici.',
+                     'one': 'Fichier',
+                     'other': 'Fichiers'}">
+                        </ng-pluralize>
+                        ({{packs[2].length}})
+                    </h1>
+                    <div ng-if="packs[2]" ng-repeat="file in packs[2] track by $index"
+                         class="files-container col-xs-3 col-md-3">
+                        <div class="back back-video"></div>
+                        <div class="content">
+                            <span class="namesFolders long">{{file}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>

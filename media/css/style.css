@@ -1,9 +1,9 @@
-.message{
-    padding:15px;
+.message {
+    padding: 15px;
     text-align: center;
     position: fixed;
     top: 35%;
-    left:40%;
+    left: 40%;
     width: 300px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -14,21 +14,21 @@ html, body {
     height: 100%;
 }
 
-h5{
+h5 {
     text-align: center;
     text-transform: uppercase;
 }
 
-.validateFormat{
+.validateFormat {
     height: 32px;
     width: 32px;
 }
 
-.error{
+.error {
     background-color: #FF4719;
 }
 
-.success{
+.success {
     background-color: #33AD5C;
     color: white;
 }
@@ -37,115 +37,115 @@ h5{
     padding-left: 10px;
     padding-right: 10px;
 }
- 
+
 #main {
-    overflow:auto;
+    overflow: auto;
     padding-bottom: 50px;
 }
- 
+
 footer {
     position: relative;
-    clear:both;
+    clear: both;
     height: 50px;
     background-color: #333;
     text-align: center;
-    color:white;
+    color: white;
     margin-top: 1px;
 }
 
-.files{
-    height:120px;
+.files {
+    height: 120px;
     margin: 10px;
     word-wrap: break-word;
     overflow: hidden;
-    border:dotted black 1px;
+    border: dotted black 1px;
 }
 
-.files p{  
-    max-height:60px;
+.files p {
+    max-height: 60px;
 }
 
-.clickable:hover{
+.clickable:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
-.contains{
-    display:none;
+.contains {
+    display: none;
 }
 
-.addable img, .deletable img, .deleteSmall{
+.addable img, .deletable img, .deleteSmall {
     cursor: pointer;
 }
 
-.addable{
+.addable {
     height: 40px;
 }
 
-.addable img.add{
+.addable img.add {
     width: 32px;
     margin-right: 20px;
 }
 
-.form-addable{
-    width:210px;
+.form-addable {
+    width: 210px;
     display: inline-block;
 }
 
-.deleteSmall{
-    height:10px;
-    width:10px;
+.deleteSmall {
+    height: 10px;
+    width: 10px;
     margin-left: 30px;
     -webkit-transition: width 0.5s, height 0.5s; /* For Safari 3.1 to 6.0 */
     transition: width 0.5s, height 0.5s;
 }
 
-.deleteSmall:hover{
-    height:16px;
-    width:16px;
+.deleteSmall:hover {
+    height: 16px;
+    width: 16px;
 }
 
-.formats strong{
-    width:35px;
-    display:inline-block;
+.formats strong {
+    width: 35px;
+    display: inline-block;
 }
 
-.formats{
-    margin:10px;
+.formats {
+    margin: 10px;
 }
 
-.validate, .submit{
-    display:inline-block;
+.validate, .submit {
+    display: inline-block;
 }
 
-.add:active{
+.add:active {
     border: solid rgba(166, 200, 255, 1) 2px;
     border-radius: 3px;
     padding: 2px;
 }
 
-.container-settings ul .ng-enter{
+.container-settings ul .ng-enter {
     -webkit-animation: slideInUp 1s;
     -moz-animation: slideInUp 1s;
     -o-animation: slideInUp 1s;
     animation: slideInUp 1s;
 }
 
-.container-settings ul .ng-leave{
+.container-settings ul .ng-leave {
     -webkit-animation: fadeOut 1s;
     -moz-animation: fadeOut 1s;
     -o-animation: fadeOut 1s;
     animation: fadeOut 1s;
 }
 
-.ng-hide{
+.ng-hide {
     -webkit-animation: fadeOut 1s;
     -moz-animation: fadeOut 1s;
     -o-animation: fadeOut 1s;
     animation: fadeOut 1s;
 }
 
-.files-container{
+.files-container {
     overflow: hidden;
     border: solid black 1px;
     height: 150px;
@@ -153,35 +153,35 @@ footer {
     z-index: 1;
 }
 
-.files-container .back-music{
+.files-container .back-music {
     background: url('../img/background_music.png') no-repeat center center;
 }
 
-.files-container .back-video{
+.files-container .back-video {
     background: url('../img/background_video.png') no-repeat center center;
 }
 
-.files-container .back{
+.files-container .back {
     opacity: 0.2;
     position: absolute;
     height: 100%;
     width: 100%;
-    margin-left:-15px;
+    margin-left: -15px;
     z-index: 2;
 }
 
-.files-container .content{
+.files-container .content {
     text-align: center;
     z-index: 3;
     height: 100%;
     width: 100%;
 }
 
-.files-container .content h1{
+.files-container .content h1 {
     margin: 0;
 }
 
-.clickable{
+.clickable {
     background-color: #dcdcdc;
     /*-webkit-transition: all .5s cubic-bezier( .6, 2, .4, 1);
     -moz-transition: all .5s cubic-bezier( .6, 2, .4, 1);
@@ -190,44 +190,69 @@ footer {
     transition: all .5s cubic-bezier( .6, 2, .4, 1);*/
 }
 
-.loading{
+.loading {
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
 }
 
-.loading div{
+.loading div {
     position: absolute;
-    top:42%;
+    top: 42%;
     left: 42%;
-    padding:50px 50px 30px 50px;
-    border:double black 5px;
+    padding: 50px 50px 30px 50px;
+    border: double black 5px;
 }
 
-.loading div span{
+.loading div span {
     display: block;
     text-align: center;
     margin-top: 10px;
 }
 
-.clickable:hover{
+.clickable:hover {
     cursor: pointer;
-    z-index:9999;
-   /* -webkit-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -o-transform: scale(1.5);
-    transform: scale(1.5);*/
+    z-index: 9999;
+    /* -webkit-transform: scale(1.5);
+     -moz-transform: scale(1.5);
+     -ms-transform: scale(1.5);
+     -o-transform: scale(1.5);
+     transform: scale(1.5);*/
 }
 
-.namesFolders{
-    color:blue;
+.namesFolders {
+    color: blue;
     font-size: 20px;
     vertical-align: middle;
     position: relative;
     top: 33%;
+}
+
+.folder-presentation .folder-container {
+    margin-bottom: 20px;
+    border: solid #C0C0C0 1px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-box-shadow: 3px 3px 6px 0 #A9A9A9;
+    -webkit-box-shadow: 3px 3px 6px #A9A9A9;
+    box-shadow: 3px 3px 6px 0 #A9A9A9;
+    padding-bottom:25px;
+}
+
+.title-folder{
+    position: relative;
+    right:0;
+    text-align: right;
+    margin:0;
+    padding:0;
+}
+
+.trace-nav-title-0{
+    color:red;
+    background-color: blue;
 }
 
 /*

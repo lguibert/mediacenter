@@ -1,15 +1,10 @@
-app.factory('FilesFactory', ['$http', '$q', '$sce', function ($http, $q, $sce) {
-    //var idtocheck = 3;
+app.factory('FilesFactory', ['$http', '$q', function ($http, $q) {
     var factory = {
         files: false,
         getFiles: function () {
             var deferred = $q.defer();
             $http.get(server + 'files/', {cache: true})
                 .success(function (data) {
-                    /*for(var i = 0; i < data.length; i++){
-                        data[i][idtocheck] = $sce.trustAsHtml(data[i][idtocheck]);
-                    }*/
-
                     deferred.resolve(data);
                 })
                 .error(function (data) {
@@ -33,7 +28,7 @@ app.factory('FilesFactory', ['$http', '$q', '$sce', function ($http, $q, $sce) {
 }]);
 
 
-app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesFactory', 'LoadingState', '$sce', '$compile', function ($scope, $rootScope, superCache, FilesFactory, LoadingState, $sce, $compile) {
+app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesFactory', 'LoadingState', function ($scope, $rootScope, superCache, FilesFactory, LoadingState) {
     var cache = superCache.get('files');
 
     if (cache) {
@@ -45,8 +40,6 @@ app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesF
         $scope.files = FilesFactory.getFiles().then(function (data) {
             $scope.data = data;
 
-            console.debug(data);
-
             LoadingState.setLoadingState(false);
             $scope.loading = LoadingState.getLoadingState();
         }, function (msg) {
@@ -57,19 +50,23 @@ app.controller('FilesController', ['$scope', '$rootScope', 'superCache', 'FilesF
     }
 
     $scope.findChildren = function (folder) {
-        console.log('find children: '+ folder);
         FilesFactory.getFile(encodeURL(folder)).then(function (data) {
             $scope.data = data;
         });
     };
 
     $scope.traceNavigation = function (root){
-        console.log(root);
         var splitroot = root.split("/");
         var trace = '';
         var allpath = [];
         var y = 0;
         var path = '';
+
+        for(var i = 0; i < splitroot.length; i++){
+            if(splitroot[i] == ''){
+                splitroot.splice(i,1);
+            }
+        }
 
         for(var i = 0; i < splitroot.length; i++){
             path = path + splitroot[i] + '/';

@@ -1,5 +1,10 @@
 <div class="container" ng-controller="FilesController">
     <div ng-hide="loading" id="containerFiles">
+        <div ng-if="data == ''">
+            <div class="folder-container col-xs-12 col-md-12">
+                <h1>Vous n'avez pas accès à ce dossier.</h1>
+            </div>
+        </div>
         <div class="folder-presentation" ng-repeat="packs in data track by $index">
             <div class="folder-container col-xs-12 col-md-12">
                 <h1 class="title-folder" trace-nav ng-attr-root="{{packs[0]}}"></h1>
